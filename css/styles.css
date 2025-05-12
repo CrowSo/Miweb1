@@ -1,0 +1,547 @@
+/* Estilos Generales */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Un gris claro para el fondo general */
+    color: #333;
+    line-height: 1.6;
+}
+
+header#main-header {
+    /* Los estilos sticky, z-index, bg-white, shadow-md son de Tailwind */
+}
+
+main {
+    width: 90%;
+    max-width: 1300px; /* Contenedor principal más ancho */
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+/* Estilo para enlaces activos en la navegación (Mejora que mantendremos) */
+.active-link {
+    font-weight: bold;
+    color: #4f46e5; /* Indigo-600 */
+    background-color: #eef2ff; /* Indigo-50 */
+}
+.mega-menu-column ul li a.active-link {
+    box-shadow: inset 2px 0 0 #4f46e5;
+}
+#mobile-menu-panel nav a.active-link {
+    background-color: #e0e7ff;
+}
+
+
+/* Estilos del Mega Menú */
+.mega-menu-categorias {
+    display: none; /* Oculto por defecto, JS lo cambiará */
+    position: absolute;
+    top: 100%; 
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 0.75rem 0.75rem; 
+    padding: 2rem; 
+    z-index: 40; /* Asegurar que esté sobre otros elementos */
+    max-height: 85vh; 
+    overflow-y: auto; 
+    /* Transición para aparición/desaparición suave */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    /* visibility: hidden; se maneja con display */
+}
+
+.mega-menu-categorias.visible {
+    display: block; /* Crucial para que sea visible */
+    opacity: 1;
+    transform: translateY(0);
+    /* visibility: visible; */
+}
+
+
+.mega-menu-column > h3 {
+    font-size: 0.9rem; 
+}
+
+.mega-menu-column ul li a {
+    font-size: 0.875rem; /* text-sm */
+}
+
+/* Estilo para destacar "Creatividad y Expresión" en el Mega Menú (Mejora) */
+.special-category-header {
+    /* Podrías añadir más estilos aquí, como un borde especial o un fondo sutil */
+}
+.cta-link-style { /* Para el enlace específico de "Creador de frases (IA)" (Mejora) */
+    font-weight: 600; /* semibold */
+}
+.cta-main-header { /* (Mejora) */
+    /* Estilos ya aplicados con Tailwind, puedes añadir más si es necesario */
+}
+
+
+/* Estilos para el Menú Móvil y Acordeones */
+#mobile-menu-panel {
+    transition: transform 0.3s ease-in-out;
+}
+
+.accordion-content,
+.sub-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+}
+
+
+/* Estilos de la Sección de Categoría y Tarjetas */
+.category-section h1#category-title { /* Cambiado de h2 a h1 por semántica (Mejora) */
+    border-bottom: 2px solid #e5e7eb; 
+    padding-bottom: 0.5rem; 
+}
+
+#category-welcome-message {
+    /* Tailwind maneja esto */
+}
+
+#filters-sidebar { /* (Mejora - Filtros) */
+    /* Tailwind maneja esto */
+}
+
+/* Estilos para la página "Explorar Todas las Categorías" (Mejora) */
+#explore-all-categories-page h1 {
+    /* Estilos ya aplicados por Tailwind */
+}
+.all-categories-main-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* semibold */
+    color: #1f2937; /* gray-800 */
+    margin-bottom: 0.75rem; /* mb-3 */
+    padding-bottom: 0.5rem; /* pb-2 */
+    border-bottom: 1px solid #e5e7eb; /* border-gray-200 */
+}
+.all-categories-sublist {
+    list-style-type: disc;
+    margin-left: 1.5rem; /* ml-6 */
+    padding-left: 0.5rem; /* pl-2 */
+}
+.all-categories-sublist li a {
+    color: #374151; /* gray-700 */
+    text-decoration: none;
+}
+.all-categories-sublist li a:hover {
+    color: #4f46e5; /* indigo-600 */
+    text-decoration: underline;
+}
+
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+    gap: 20px; 
+}
+
+/* Estilos Base de la Tarjeta de Frase */
+.quote-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px; 
+    background-color: #ffffff; 
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.4s ease, color 0.4s ease;
+    
+    /* Para animación de entrada escalonada (Mejora) */
+    opacity: 0;
+    transform: translateY(20px);
+}
+.quote-card.visible { /* Clase para activar la animación de entrada (Mejora) */
+    opacity: 1;
+    transform: translateY(0);
+    /* La transición individual se puede poner aquí si no se escalona con JS delays */
+    /* transition: opacity 0.4s ease-out, transform 0.4s ease-out; */
+}
+
+
+.quote-card:hover {
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    transition: background 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+.card-background .sky-element,
+.card-background .hill-element,
+.card-background .gradient-overlay-shape,
+.card-background .star-sprinkle,
+.card-background .neon-grid-line,
+.card-background .floral-pattern,
+.card-background .geometric-shape {
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card-content {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    transition: color 0.4s ease;
+}
+
+.quote-card .card-content.text-align-top { justify-content: flex-start; }
+.quote-card .card-content.text-align-middle { justify-content: center; }
+.quote-card .card-content.text-align-bottom { justify-content: flex-end; }
+
+.quote-text {
+    font-size: 1.25em; 
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    font-style: italic;
+    line-height: 1.4; 
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.quote-author {
+    font-size: 1em; 
+    font-weight: 400;
+    text-align: right;
+    margin: 0 0 5px 0;
+    transition: color 0.4s ease;
+}
+
+.quote-year {
+    font-size: 0.8em;
+    text-align: right;
+    opacity: 0.7;
+    margin: 0 0 12px 0;
+    transition: color 0.4s ease, opacity 0.4s ease;
+}
+
+.quote-explanation {
+    max-height: 0; 
+    overflow: hidden;
+    font-size: 0.85em;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 0 10px;
+    border-radius: 6px;
+    margin-top: 0;
+    border-left: 3px solid transparent;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out,
+                padding 0.3s ease-in-out, border-width 0.3s ease-in-out,
+                background-color 0.4s ease, color 0.4s ease, border-left-color 0.4s ease;
+}
+
+.card-actions {
+    padding: 10px 15px; 
+    background-color: rgba(255, 255, 255, 0.7); 
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; 
+    z-index: 3;
+    border-top: 1px solid rgba(0,0,0,0.05); 
+    transition: background-color 0.4s ease, border-top-color 0.4s ease;
+}
+
+.card-actions button {
+    background-color: transparent;
+    border: 1px solid #ccc; 
+    color: #555; 
+    padding: 6px 10px; 
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 0.95em;
+    line-height: 1;
+    transition: background-color 0.2s ease, color 0.4s ease, border-color 0.4s ease, transform 0.2s ease;
+}
+
+.card-actions button:hover {
+    transform: scale(1.1);
+    background-color: #e0e0e0; 
+}
+
+/* --- TEMAS DE TARJETAS (ORIGINALES RESTAURADOS) --- */
+/* Tema 1: Naturaleza */
+.quote-card.theme-nature { color: #1A2A3F; }
+.theme-nature .card-background { background: linear-gradient(180deg, #a1c4fd 0%, #c2e9fb 100%); }
+.theme-nature .card-background .sky-element, .theme-nature .card-background .hill-element { display: block; opacity: 1;}
+.theme-nature .card-background .sky-element { position: absolute; width: 180px; height: 90px; background: radial-gradient(circle, rgba(255,255,255,0.6) 20%, rgba(255,255,255,0) 70%); top: 8%; left: 12%; border-radius: 50%; opacity: 0.4; }
+.theme-nature .card-background .hill-element { position: absolute; bottom: 0; left: 0; width: 100%; height: 25%; background: linear-gradient(to top, #8fd3f4, #84fab0); clip-path: ellipse(100% 60% at 50% 100%); opacity: 0.5; }
+.theme-nature .quote-text { font-family: 'Georgia', serif; color: #072F5F; }
+.theme-nature .quote-author, .theme-nature .quote-year { color: #2E6AA0; }
+.theme-nature .quote-explanation { background-color: rgba(255, 255, 255, 0.6); color: #1A2A3F; border-left-color: #84fab0; }
+.theme-nature .card-actions { background-color: rgba(227, 240, 253, 0.7); border-top-color: rgba(132, 250, 176, 0.3); }
+.theme-nature .card-actions button { border-color: #84fab0; color: #072F5F;}
+.theme-nature .card-actions button:hover { background-color: rgba(132, 250, 176, 0.2); }
+
+/* Tema 2: Gradiente Minimalista */
+.quote-card.theme-minimalist-gradient { color: #ffffff; }
+.theme-minimalist-gradient .card-background { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.theme-minimalist-gradient .card-background .gradient-overlay-shape {display:block; opacity:1; position: absolute; width: 150px; height: 150px; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.0) 70%); border-radius: 50%; top: -30px; right: -50px; transform: rotate(45deg); }
+.theme-minimalist-gradient .quote-text { font-family: 'Montserrat', sans-serif; text-shadow: 1px 1px 2px rgba(0,0,0,0.15); color: #fff; }
+.theme-minimalist-gradient .quote-author, .theme-minimalist-gradient .quote-year { color: #e8e8e8; }
+.theme-minimalist-gradient .quote-explanation { background-color: rgba(0,0,0,0.2); color: #f0f0f0; border-left-color: #764ba2;}
+.theme-minimalist-gradient .card-actions { background-color: rgba(0,0,0,0.1); border-top-color: rgba(255,255,255,0.1); }
+.theme-minimalist-gradient .card-actions button { border-color: rgba(255,255,255,0.4); color: #fff;}
+.theme-minimalist-gradient .card-actions button:hover { background-color: rgba(255,255,255,0.08); }
+
+/* Tema 3: Oscuro Elegante */
+.quote-card.theme-dark-elegant { color: #e0e0e0; }
+.theme-dark-elegant .card-background { background-color: #2c3e50; }
+.theme-dark-elegant .quote-text { font-family: 'Lora', serif; color: #ecf0f1; }
+.theme-dark-elegant .quote-author, .theme-dark-elegant .quote-year { color: #bdc3c7; }
+.theme-dark-elegant .quote-explanation { background-color: rgba(255,255,255,0.04); color: #bdc3c7; border-left-color: #3498db;}
+.theme-dark-elegant .card-actions { background-color: rgba(255,255,255,0.03); border-top-color: rgba(52, 152, 219, 0.2); }
+.theme-dark-elegant .card-actions button { border-color: #3498db; color: #ecf0f1;}
+.theme-dark-elegant .card-actions button:hover { background-color: rgba(52, 152, 219, 0.15); }
+
+/* Tema 4: Papel Antiguo */
+.quote-card.theme-old-paper { color: #5D4037; }
+.theme-old-paper .card-background { background-color: #f5e8c8; background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d4c0a1' fill-opacity='0.15'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+.theme-old-paper .quote-text { font-family: 'Times New Roman', Times, serif; color: #4E342E; }
+.theme-old-paper .quote-author, .theme-old-paper .quote-year { color: #6D4C41; }
+.theme-old-paper .quote-explanation { background-color: rgba(212, 192, 161, 0.25); color: #5D4037; border-left-color: #A1887F;}
+.theme-old-paper .card-actions { background-color: rgba(245, 232, 200, 0.7); border-top-color: rgba(161, 136, 127, 0.3); }
+.theme-old-paper .card-actions button { border-color: #A1887F; color: #5D4037;}
+.theme-old-paper .card-actions button:hover { background-color: rgba(161, 136, 127, 0.15); }
+
+/* Tema 5: Neon Glow */
+.quote-card.theme-neon-glow { color: #e0e0ff; }
+.theme-neon-glow .card-background { background-color: #100a1f; }
+.theme-neon-glow .quote-text { color: #ff00e0; text-shadow: 0 0 5px #ff00e0, 0 0 10px #ff00e0, 0 0 15px #ff00e0; font-family: 'Courier New', Courier, monospace; }
+.theme-neon-glow .quote-author, .theme-neon-glow .quote-year { color: #00f2ff; }
+.theme-neon-glow .quote-explanation { background-color: rgba(30, 10, 50, 0.5); color: #e0e0ff; border-left-color: #00f2ff; }
+.theme-neon-glow .card-actions { background-color: rgba(16,10,31,0.7); border-top-color: #00f2ff;}
+.theme-neon-glow .card-actions button { border-color: #ff00e0; color: #ff00e0; }
+.theme-neon-glow .card-actions button:hover { background-color: rgba(255, 0, 224, 0.1); }
+
+/* Tema 6: Pastel Dream */
+.quote-card.theme-pastel-dream { color: #5b5f97; }
+.theme-pastel-dream .card-background { background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); }
+.theme-pastel-dream .quote-text { color: #5b5f97; font-family: 'Georgia', serif; }
+.theme-pastel-dream .quote-author, .theme-pastel-dream .quote-year { color: #6b6b83; }
+.theme-pastel-dream .quote-explanation { background-color: rgba(255, 255, 255, 0.6); color: #5b5f97; border-left-color: #a6c1ee; }
+.theme-pastel-dream .card-actions { background-color: rgba(255,255,255,0.5); border-top-color: rgba(166,193,238,0.4); }
+.theme-pastel-dream .card-actions button { border-color: #fbc2eb; color: #5b5f97; }
+.theme-pastel-dream .card-actions button:hover { background-color: rgba(251, 194, 235, 0.3); }
+
+/* Tema 7: Sharp Contrast */
+.quote-card.theme-sharp-contrast { color: #212529; }
+.theme-sharp-contrast .card-background { background-color: #f8f9fa; border: 1px solid #dee2e6; }
+.theme-sharp-contrast .quote-text { color: #007bff; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: bold; }
+.theme-sharp-contrast .quote-author, .theme-sharp-contrast .quote-year { color: #495057; }
+.theme-sharp-contrast .quote-explanation { background-color: #e9ecef; color: #212529; border-left-color: #007bff; }
+.theme-sharp-contrast .card-actions { background-color: #f8f9fa; border-top-color: #dee2e6; }
+.theme-sharp-contrast .card-actions button { border-color: #007bff; color: #007bff; }
+.theme-sharp-contrast .card-actions button:hover { background-color: rgba(0, 123, 255, 0.1); }
+
+/* Tema 8: Ocean Depths */
+.quote-card.theme-ocean-depths { color: #f0f8ff; }
+.theme-ocean-depths .card-background { background: linear-gradient(to bottom, #001f3f 0%, #0074D9 70%, #7FDBFF 100%); }
+.theme-ocean-depths .quote-text { color: #f0f8ff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+.theme-ocean-depths .quote-author, .theme-ocean-depths .quote-year { color: #add8e6; }
+.theme-ocean-depths .quote-explanation { background-color: rgba(0, 116, 217, 0.3); color: #f0f8ff; border-left-color: #7FDBFF; }
+.theme-ocean-depths .card-actions { background-color: rgba(0,31,63,0.5); border-top-color: #7FDBFF;}
+.theme-ocean-depths .card-actions button { border-color: #f0f8ff; color: #f0f8ff; }
+.theme-ocean-depths .card-actions button:hover { background-color: rgba(127, 219, 255, 0.2); }
+
+/* Tema 9: Synthwave Sunset */
+.quote-card.theme-synthwave-sunset { color: #f0f0f0; }
+.theme-synthwave-sunset .card-background { background: linear-gradient(to top, #ff7e5f, #feb47b, #8a2be2 80%); }
+.theme-synthwave-sunset .quote-text { color: #00f2ff; text-shadow: 0 0 3px #00f2ff, 0 0 6px #00f2ff; font-family: 'Consolas', monospace; }
+.theme-synthwave-sunset .quote-author, .theme-synthwave-sunset .quote-year { color: #ffdf00; }
+.theme-synthwave-sunset .quote-explanation { background-color: rgba(50, 20, 80, 0.6); color: #f0f0f0; border-left-color: #ff00e0; }
+.theme-synthwave-sunset .card-actions { background-color: rgba(40,10,70,0.7); border-top-color: #ff00e0;}
+.theme-synthwave-sunset .card-actions button { border-color: #00f2ff; color: #00f2ff; }
+.theme-synthwave-sunset .card-actions button:hover { background-color: rgba(0, 242, 255, 0.15); }
+
+/* Tema 10: Forest Path */
+.quote-card.theme-forest-path { color: #f5f5dc; }
+.theme-forest-path .card-background { background: linear-gradient(130deg, #228B22 0%, #8B4513 100%); }
+.theme-forest-path .quote-text { color: #f5f5dc; font-family: 'Georgia', serif; text-shadow: 1px 1px 1px #000; }
+.theme-forest-path .quote-author, .theme-forest-path .quote-year { color: #d2b48c; }
+.theme-forest-path .quote-explanation { background-color: rgba(139, 69, 19, 0.4); color: #f5f5dc; border-left-color: #228B22; }
+.theme-forest-path .card-actions { background-color: rgba(34,139,34,0.3); border-top-color: #d2b48c;}
+.theme-forest-path .card-actions button { border-color: #f5f5dc; color: #f5f5dc; }
+.theme-forest-path .card-actions button:hover { background-color: rgba(245, 245, 220, 0.15); }
+
+/* Tema 11: Vibrant Mesh */
+.quote-card.theme-vibrant-mesh { color: #ffffff; }
+.theme-vibrant-mesh .card-background { background: linear-gradient(60deg, #f95738 0%, #fc9d22 25%, #ffd700 50%, #a0e8af 75%, #20bf55 100%); }
+.theme-vibrant-mesh .quote-text { color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-family: 'Arial Black', Gadget, sans-serif; }
+.theme-vibrant-mesh .quote-author, .theme-vibrant-mesh .quote-year { color: #f0f0f0; }
+.theme-vibrant-mesh .quote-explanation { background-color: rgba(255,255,255,0.2); color: #333; border-left-color: #f95738; }
+.theme-vibrant-mesh .card-actions { background-color: rgba(0,0,0,0.1); border-top-color: rgba(255,255,255,0.2);}
+.theme-vibrant-mesh .card-actions button { border-color: #fff; color: #fff; }
+.theme-vibrant-mesh .card-actions button:hover { background-color: rgba(255,255,255,0.1); }
+
+/* Tema 12: Golden Elegance */
+.quote-card.theme-golden-elegance { color: #e0e0e0; }
+.theme-golden-elegance .card-background { background-color: #212121; }
+.theme-golden-elegance .quote-text { color: #ffd700; font-family: 'Times New Roman', Times, serif; }
+.theme-golden-elegance .quote-author, .theme-golden-elegance .quote-year { color: #b0a070; }
+.theme-golden-elegance .quote-explanation { background-color: #333333; color: #e0e0e0; border-left-color: #ffd700; }
+.theme-golden-elegance .card-actions { background-color: #2a2a2a; border-top-color: #ffd700;}
+.theme-golden-elegance .card-actions button { border-color: #ffd700; color: #ffd700; }
+.theme-golden-elegance .card-actions button:hover { background-color: rgba(255, 215, 0, 0.1); }
+
+/* Tema 13: Spring Bloom */
+.quote-card.theme-spring-bloom { color: #38761d; }
+.theme-spring-bloom .card-background { background: linear-gradient(to bottom right, #e9f5db, #c8e6c9); }
+.theme-spring-bloom .quote-text { color: #38761d; font-family: 'Georgia', serif; }
+.theme-spring-bloom .quote-author, .theme-spring-bloom .quote-year { color: #ff8fab; }
+.theme-spring-bloom .quote-explanation { background-color: rgba(255, 240, 245, 0.7); color: #38761d; border-left-color: #ff8fab; }
+.theme-spring-bloom .card-actions { background-color: rgba(233,245,219,0.7); border-top-color: #ff8fab;}
+.theme-spring-bloom .card-actions button { border-color: #ff8fab; color: #38761d; }
+.theme-spring-bloom .card-actions button:hover { background-color: rgba(255, 135, 171, 0.15); }
+
+/* Tema 14: Cosmic Dust */
+.quote-card.theme-cosmic-dust { color: #e0e0ff; }
+.theme-cosmic-dust .card-background {
+    background-color: #0c0a1f; 
+    background-image:
+        radial-gradient(circle at 15% 25%, rgba(224, 224, 255, 0.5) 0.5px, transparent 1.5px),
+        radial-gradient(circle at 60% 10%, rgba(200, 200, 255, 0.4) 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, rgba(224, 224, 255, 0.3) 0.5px, transparent 1.5px),
+        radial-gradient(circle at 85% 60%, rgba(200, 200, 255, 0.4) 1px, transparent 2px),
+        radial-gradient(circle at 50% 50%, rgba(224, 224, 255, 0.2) 0.5px, transparent 1px);
+    background-size: 100px 100px; 
+}
+.theme-cosmic-dust .quote-text { color: #e0e0ff; text-shadow: 0 0 5px #a0a0ff; font-family: 'Orbitron', sans-serif; }
+.theme-cosmic-dust .quote-author, .theme-cosmic-dust .quote-year { color: #c0c0f0; }
+.theme-cosmic-dust .quote-explanation { background-color: rgba(40, 30, 70, 0.6); color: #e0e0ff; border-left-color: #c0c0f0; }
+.theme-cosmic-dust .card-actions { background-color: rgba(12,10,31,0.7); border-top-color: #c0c0f0;}
+.theme-cosmic-dust .card-actions button { border-color: #e0e0ff; color: #e0e0ff; }
+.theme-cosmic-dust .card-actions button:hover { background-color: rgba(224, 224, 255, 0.1); }
+
+
+/* Estilos del Modal con Transiciones */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); 
+    display: flex; 
+    align-items: center; justify-content: center;
+    z-index: 1000;
+    padding: 15px; box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden; 
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s, backdrop-filter 0.3s ease-in-out, -webkit-backdrop-filter 0.3s ease-in-out;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s; 
+    backdrop-filter: blur(6px); 
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-content-wrapper {
+    position: relative;
+    display: flex; 
+    align-items: flex-start; 
+    gap: 20px; 
+    transform: translateY(40px) scale(0.95); 
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease-out;
+    transition-delay: 0.05s; 
+}
+
+.modal-overlay.visible .modal-content-wrapper {
+    transform: translateY(0) scale(1); 
+    opacity: 1;
+}
+
+#modal-card-placeholder .quote-card {
+    width: 337.5px; 
+    height: 600px; 
+    max-width: calc(90vw - 44px - 20px - 30px); 
+    max-height: 88vh;
+    cursor: default; 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3); 
+    opacity: 1; /* Asegurar que sea visible en el modal */
+    transform: translateY(0); /* Asegurar que no esté desplazada */
+}
+
+#modal-card-placeholder .quote-card .quote-explanation {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    margin-top: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+#modal-card-placeholder .quote-card .quote-explanation.modal-visible {
+    max-height: 380px; 
+    opacity: 1;
+    padding: 10px;
+    margin-top: 10px;
+    border-left-width: 3px; 
+}
+
+.modal-actions-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+    padding-top: 20px; 
+    z-index: 1005;
+}
+
+.modal-actions-sidebar button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 0; 
+    border-radius: 50%; 
+    width: 44px; 
+    height: 44px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3em; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.4s ease, border-color 0.4s ease;
+    line-height: 1; 
+}
+
+.modal-actions-sidebar button:hover {
+    background-color: #e9e9e9;
+    transform: scale(1.1);
+}
+
+#modal-close-btn {
+    position: absolute;
+    top: -18px; 
+    right: -18px; 
+    background-color: #fff; color: #333; border: none; border-radius: 50%;
+    width: 38px; height: 38px; font-size: 24px; line-height: 36px; 
+    text-align: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 1010; 
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#modal-close-btn:hover { 
+    transform: scale(1.15); 
+    background-color: #e7e7e7; 
+}
+
+/* Estilos del Footer */
+/* Sin cambios mayores, Tailwind lo controla bien */

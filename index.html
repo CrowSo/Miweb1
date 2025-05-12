@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases Inspiradoras Interactivas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: colors.indigo,
+                        green: colors.green,
+                        purple: colors.purple,
+                        blue: colors.blue,
+                        pink: colors.pink,
+                        teal: colors.teal,
+                        orange: colors.orange,
+                        cyan: colors.cyan,
+                        lime: colors.lime,
+                        yellow: colors.yellow,
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <header id="main-header" class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" id="home-logo-link" class="text-2xl font-bold text-indigo-600 flex-shrink-0">
+                LogoFrases
+            </a>
+
+            <nav id="main-nav" class="hidden lg:flex flex-grow justify-center items-center space-x-2 mx-4" aria-label="Navegación Principal">
+                <div class="nav-item-categorias relative group">
+                    <button
+                        id="categorias-menu-button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="mega-menu-panel-categorias"
+                        class="px-4 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:bg-indigo-50 transition-colors duration-150">
+                        Categorías
+                        <svg class="inline-block w-4 h-4 ml-1 transform transition-transform duration-200 group-hover:rotate-180"
+                            fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="mega-menu-panel-categorias" role="region" aria-labelledby="categorias-menu-button" class="mega-menu-categorias w-full md:w-auto md:min-w-[900px] md:max-w-5xl left-1/2 transform -translate-x-1/2">
+                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-8">
+                            <div class="mega-menu-column">
+                                <h3 class="text-indigo-600 font-semibold mb-3 pb-1 border-b border-gray-200">💖 Amor y Relaciones</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="amor-dedicar" data-category-name="Frases de amor para dedicar" class="category-link block text-sm text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md p-1.5">Frases de amor para dedicar</a></li>
+                                    <li><a href="#" data-category-id="amor-desamor" data-category-name="Frases de desamor y superación" class="category-link block text-sm text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md p-1.5">Frases de desamor y superación</a></li>
+                                    <li><a href="#" data-category-id="amor-enamorar" data-category-name="Frases para enamorar" class="category-link block text-sm text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md p-1.5">Frases para enamorar</a></li>
+                                    <li><a href="#" data-category-id="amor-parejas" data-category-name="Frases para parejas" class="category-link block text-sm text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md p-1.5">Frases para parejas</a></li>
+                                    <li><a href="#" data-category-id="amor-ex" data-category-name="Frases para ex" class="category-link block text-sm text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md p-1.5">Frases para ex</a></li>
+                                    <li><a href="#" data-category-id="amor-amistad" data-category-name="Frases para amistad profunda" class="category-link block text-sm text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md p-1.5">Frases para amistad profunda</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-green-600 font-semibold mb-3 pb-1 border-b border-gray-200">🚀 Motivación y Éxito</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="motivacion-dia" data-category-name="Frases para empezar el día" class="category-link block text-sm text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded-md p-1.5">Frases para empezar el día</a></li>
+                                    <li><a href="#" data-category-id="motivacion-superacion" data-category-name="Frases de superación personal" class="category-link block text-sm text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded-md p-1.5">Frases de superación personal</a></li>
+                                    <li><a href="#" data-category-id="motivacion-emprendedores" data-category-name="Frases para emprendedores" class="category-link block text-sm text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded-md p-1.5">Frases para emprendedores</a></li>
+                                    <li><a href="#" data-category-id="motivacion-estudiantes" data-category-name="Frases para estudiantes" class="category-link block text-sm text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded-md p-1.5">Frases para estudiantes</a></li>
+                                    <li><a href="#" data-category-id="motivacion-miedo" data-category-name="Frases para vencer el miedo" class="category-link block text-sm text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded-md p-1.5">Frases para vencer el miedo</a></li>
+                                    <li><a href="#" data-category-id="motivacion-confort" data-category-name="Frases para salir de la zona de confort" class="category-link block text-sm text-gray-600 hover:text-green-600 hover:bg-gray-50 rounded-md p-1.5">Frases para salir de la zona de confort</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-purple-600 font-semibold mb-3 pb-1 border-b border-gray-200">🧠 Sabiduría y Filosofía</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="sabiduria-filosofos" data-category-name="Frases de filósofos clásicos" class="category-link block text-sm text-gray-600 hover:text-purple-600 hover:bg-gray-50 rounded-md p-1.5">Frases de filósofos clásicos</a></li>
+                                    <li><a href="#" data-category-id="sabiduria-estoicas" data-category-name="Frases estoicas" class="category-link block text-sm text-gray-600 hover:text-purple-600 hover:bg-gray-50 rounded-md p-1.5">Frases estoicas</a></li>
+                                    <li><a href="#" data-category-id="sabiduria-existencialistas" data-category-name="Frases existencialistas" class="category-link block text-sm text-gray-600 hover:text-purple-600 hover:bg-gray-50 rounded-md p-1.5">Frases existencialistas</a></li>
+                                    <li><a href="#" data-category-id="sabiduria-espiritualidad" data-category-name="Frases de espiritualidad o zen" class="category-link block text-sm text-gray-600 hover:text-purple-600 hover:bg-gray-50 rounded-md p-1.5">Frases de espiritualidad o zen</a></li>
+                                    <li><a href="#" data-category-id="sabiduria-analisis" data-category-name="Frases con análisis" class="category-link block text-sm text-gray-600 hover:text-purple-600 hover:bg-gray-50 rounded-md p-1.5">Frases con análisis</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-blue-600 font-semibold mb-3 pb-1 border-b border-gray-200">🎭 Reflexión y Vida</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="reflexion-vida" data-category-name="Frases sobre la vida" class="category-link block text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md p-1.5">Frases sobre la vida</a></li>
+                                    <li><a href="#" data-category-id="reflexion-tiempo" data-category-name="Frases sobre el tiempo" class="category-link block text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md p-1.5">Frases sobre el tiempo</a></li>
+                                    <li><a href="#" data-category-id="reflexion-dolor" data-category-name="Frases sobre el dolor" class="category-link block text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md p-1.5">Frases sobre el dolor</a></li>
+                                    <li><a href="#" data-category-id="reflexion-soledad" data-category-name="Frases sobre la soledad" class="category-link block text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md p-1.5">Frases sobre la soledad</a></li>
+                                    <li><a href="#" data-category-id="reflexion-muerte" data-category-name="Frases sobre la muerte" class="category-link block text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md p-1.5">Frases sobre la muerte</a></li>
+                                    <li><a href="#" data-category-id="reflexion-dificiles" data-category-name="Frases para momentos difíciles" class="category-link block text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md p-1.5">Frases para momentos difíciles</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-pink-600 font-semibold mb-3 pb-1 border-b border-gray-200">💬 Autores y Celebridades</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="autores-escritores" data-category-name="Escritores famosos" class="category-link block text-sm text-gray-600 hover:text-pink-600 hover:bg-gray-50 rounded-md p-1.5">Escritores famosos</a></li>
+                                    <li><a href="#" data-category-id="autores-cientificos" data-category-name="Científicos y pensadores" class="category-link block text-sm text-gray-600 hover:text-pink-600 hover:bg-gray-50 rounded-md p-1.5">Científicos y pensadores</a></li>
+                                    <li><a href="#" data-category-id="autores-historicos" data-category-name="Personajes históricos" class="category-link block text-sm text-gray-600 hover:text-pink-600 hover:bg-gray-50 rounded-md p-1.5">Personajes históricos</a></li>
+                                    <li><a href="#" data-category-id="autores-artistas" data-category-name="Artistas y cineastas" class="category-link block text-sm text-gray-600 hover:text-pink-600 hover:bg-gray-50 rounded-md p-1.5">Artistas y cineastas</a></li>
+                                    <li><a href="#" data-category-id="autores-poetas" data-category-name="Poetas" class="category-link block text-sm text-gray-600 hover:text-pink-600 hover:bg-gray-50 rounded-md p-1.5">Poetas</a></li>
+                                    <li><a href="#" data-category-id="autores-biblicas" data-category-name="Frases bíblicas y religiosas" class="category-link block text-sm text-gray-600 hover:text-pink-600 hover:bg-gray-50 rounded-md p-1.5">Frases bíblicas y religiosas</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-teal-600 font-semibold mb-3 pb-1 border-b border-gray-200">📱 Para Redes Sociales</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="redes-sociales" data-category-name="Frases para Instagram, TikTok, etc." class="category-link block text-sm text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md p-1.5">Para Instagram, TikTok, etc.</a></li>
+                                    <li><a href="#" data-category-id="redes-cortas" data-category-name="Frases cortas e impactantes" class="category-link block text-sm text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md p-1.5">Cortas e impactantes</a></li>
+                                    <li><a href="#" data-category-id="redes-sarcasmo" data-category-name="Frases con sarcasmo o indirectas" class="category-link block text-sm text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md p-1.5">Con sarcasmo o indirectas</a></li>
+                                    <li><a href="#" data-category-id="redes-imagenes" data-category-name="Frases en imágenes o estilo meme" class="category-link block text-sm text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md p-1.5">En imágenes o estilo "meme"</a></li>
+                                    <li><a href="#" data-category-id="redes-esteticas" data-category-name="Frases estéticas y profundas" class="category-link block text-sm text-gray-600 hover:text-teal-600 hover:bg-gray-50 rounded-md p-1.5">Estéticas y profundas</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-orange-600 font-semibold mb-3 pb-1 border-b border-gray-200">🧳 Momentos y Ocaciones</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="momentos-cumpleanos" data-category-name="Frases para cumpleaños" class="category-link block text-sm text-gray-600 hover:text-orange-600 hover:bg-gray-50 rounded-md p-1.5">Para cumpleaños</a></li>
+                                    <li><a href="#" data-category-id="momentos-navidad" data-category-name="Frases navideñas o de Año Nuevo" class="category-link block text-sm text-gray-600 hover:text-orange-600 hover:bg-gray-50 rounded-md p-1.5">Navideñas o Año Nuevo</a></li>
+                                    <li><a href="#" data-category-id="momentos-graduaciones" data-category-name="Frases para graduaciones" class="category-link block text-sm text-gray-600 hover:text-orange-600 hover:bg-gray-50 rounded-md p-1.5">Para graduaciones</a></li>
+                                    <li><a href="#" data-category-id="momentos-despedidas" data-category-name="Frases para despedidas" class="category-link block text-sm text-gray-600 hover:text-orange-600 hover:bg-gray-50 rounded-md p-1.5">Para despedidas</a></li>
+                                    <li><a href="#" data-category-id="momentos-condolencias" data-category-name="Frases para condolencias" class="category-link block text-sm text-gray-600 hover:text-orange-600 hover:bg-gray-50 rounded-md p-1.5">Para condolencias</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-cyan-600 font-semibold mb-3 pb-1 border-b border-gray-200">🌍 Frases del Mundo</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="mundo-refranes" data-category-name="Refranes populares por país" class="category-link block text-sm text-gray-600 hover:text-cyan-600 hover:bg-gray-50 rounded-md p-1.5">Refranes por país</a></li>
+                                    <li><a href="#" data-category-id="mundo-proverbios" data-category-name="Proverbios de culturas del mundo" class="category-link block text-sm text-gray-600 hover:text-cyan-600 hover:bg-gray-50 rounded-md p-1.5">Proverbios culturales</a></li>
+                                    <li><a href="#" data-category-id="mundo-indigenas" data-category-name="Frases indígenas o ancestrales" class="category-link block text-sm text-gray-600 hover:text-cyan-600 hover:bg-gray-50 rounded-md p-1.5">Indígenas o ancestrales</a></li>
+                                    <li><a href="#" data-category-id="mundo-traducidas" data-category-name="Frases traducidas de otros idiomas" class="category-link block text-sm text-gray-600 hover:text-cyan-600 hover:bg-gray-50 rounded-md p-1.5">Traducidas de otros idiomas</a></li>
+                                    <li><a href="#" data-category-id="mundo-antiguas" data-category-name="Frases antiguas y su significado" class="category-link block text-sm text-gray-600 hover:text-cyan-600 hover:bg-gray-50 rounded-md p-1.5">Antiguas y su significado</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3 class="text-lime-600 font-semibold mb-3 pb-1 border-b border-gray-200">🎬 Ficción y Cultura Pop</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="ficcion-peliculas" data-category-name="Frases de películas" class="category-link block text-sm text-gray-600 hover:text-lime-600 hover:bg-gray-50 rounded-md p-1.5">De películas</a></li>
+                                    <li><a href="#" data-category-id="ficcion-libros" data-category-name="Frases de libros" class="category-link block text-sm text-gray-600 hover:text-lime-600 hover:bg-gray-50 rounded-md p-1.5">De libros</a></li>
+                                    <li><a href="#" data-category-id="ficcion-anime" data-category-name="Frases de anime" class="category-link block text-sm text-gray-600 hover:text-lime-600 hover:bg-gray-50 rounded-md p-1.5">De anime</a></li>
+                                    <li><a href="#" data-category-id="ficcion-videojuegos" data-category-name="Frases de videojuegos" class="category-link block text-sm text-gray-600 hover:text-lime-600 hover:bg-gray-50 rounded-md p-1.5">De videojuegos</a></li>
+                                    <li><a href="#" data-category-id="ficcion-series" data-category-name="Frases de series" class="category-link block text-sm text-gray-600 hover:text-lime-600 hover:bg-gray-50 rounded-md p-1.5">De series</a></li>
+                                    <li><a href="#" data-category-id="ficcion-personajes" data-category-name="Frases de personajes famosos ficticios" class="category-link block text-sm text-gray-600 hover:text-lime-600 hover:bg-gray-50 rounded-md p-1.5">De personajes ficticios</a></li>
+                                </ul>
+                            </div>
+                             <div class="mega-menu-column">
+                                <h3 class="text-yellow-500 font-semibold mb-3 pb-1 border-b border-gray-200 special-category-header">🎨 Creatividad y Expresión</h3>
+                                <ul class="space-y-1" role="list">
+                                    <li><a href="#" data-category-id="creatividad-ia" data-category-name="Creador de frases personalizadas (IA)" class="category-link block text-sm text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-md p-1.5 cta-link-style">✨ Creador de frases (IA)</a></li>
+                                    <li><a href="#" data-category-id="creatividad-usuarios" data-category-name="Frases de usuarios (moderadas)" class="category-link block text-sm text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-md p-1.5">Frases de usuarios</a></li>
+                                    <li><a href="#" data-category-id="creatividad-combinadas" data-category-name="Frases combinadas" class="category-link block text-sm text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-md p-1.5">Frases combinadas</a></li>
+                                    <li><a href="#" data-category-id="creatividad-ilustradas" data-category-name="Frases ilustradas" class="category-link block text-sm text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-md p-1.5">Frases ilustradas</a></li>
+                                    <li><a href="#" data-category-id="creatividad-desafio" data-category-name="Desafío de frases del día" class="category-link block text-sm text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-md p-1.5">Desafío de frases</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" data-category-id="frase-del-dia" data-category-name="Frase del Día" class="category-link px-4 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-150">Frase del día</a>
+                <a href="#" data-category-id="recomendaciones" data-category-name="Recomendaciones" class="category-link px-4 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-150">Recomendaciones</a>
+                <a href="#explore-all-categories-page" id="explore-all-link-header" class="px-4 py-2.5 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-150">Explorar Todo</a>
+            </nav>
+
+            <div class="flex items-center flex-shrink-0 ml-4">
+                 <a href="#" data-category-id="creatividad-ia" data-category-name="Creador de frases personalizadas (IA)" class="category-link hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg text-sm shadow-md hover:shadow-lg transition-all duration-150 mr-4 cta-main-header">
+                    ✨ Crear Frase (IA)
+                </a>
+                <form id="global-search-form" class="relative hidden md:block">
+                    <label for="global-search-input" class="sr-only">Buscar frases en todo el sitio</label>
+                    <input id="global-search-input" type="search" placeholder="Buscar frases..."
+                        class="py-2 px-4 w-full max-w-xs text-sm border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <button type="submit" aria-label="Buscar"
+                        class="absolute right-0 top-0 mt-2.5 mr-3 text-gray-500 hover:text-indigo-600">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <button id="mobile-menu-button"
+                aria-label="Abrir menú principal"
+                aria-expanded="false"
+                aria-controls="mobile-menu-panel"
+                class="lg:hidden p-2 rounded-md text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 ml-3">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu-panel"
+            role="dialog" 
+            aria-modal="true"
+            aria-labelledby="mobile-menu-title"
+            class="lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 transform -translate-x-full z-40 transition-transform duration-300 ease-in-out">
+            <div class="fixed top-0 left-0 bottom-0 w-72 max-w-[85vw] bg-white shadow-xl p-5 overflow-y-auto">
+                <div class="flex items-center justify-between mb-6">
+                    <a href="#" class="home-logo-link text-xl font-bold text-indigo-600" id="mobile-menu-title">LogoFrases</a>
+                    <button id="close-mobile-menu-button"
+                        aria-label="Cerrar menú principal"
+                        class="p-2 rounded-md text-gray-500 hover:text-indigo-600 hover:bg-indigo-100">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <form id="mobile-search-form" class="relative mb-4">
+                    <label for="mobile-search-input" class="sr-only">Buscar frases en todo el sitio</label>
+                    <input id="mobile-search-input" type="search" placeholder="Buscar frases..."
+                        class="py-2.5 px-4 w-full text-sm border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                    <button type="submit" aria-label="Buscar"
+                        class="absolute right-0 top-0 mt-2.5 mr-3 text-gray-500 hover:text-indigo-600">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+                    </button>
+                </form>
+                <nav class="space-y-1.5" aria-label="Navegación móvil">
+                    <div class="accordion-item">
+                        <button class="accordion-toggle flex items-center justify-between w-full px-3 py-2.5 text-left text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"
+                                aria-expanded="false" aria-controls="accordion-content-categorias-mobile">
+                            <span>Categorías</span>
+                            <svg class="w-5 h-5 transform transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div id="accordion-content-categorias-mobile" class="accordion-content pl-3 mt-1 space-y-1" style="max-height: 0;" hidden>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-toggle flex items-center justify-between w-full px-3 py-2 text-left text-xs font-medium text-gray-600 hover:bg-gray-50 rounded-md"
+                                        aria-expanded="false" aria-controls="sub-accordion-amor-mobile">
+                                    <span>💖 Amor y Relaciones</span>
+                                    <svg class="w-4 h-4 transform transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                </button>
+                                <div id="sub-accordion-amor-mobile" class="sub-accordion-content pl-4 mt-1 space-y-0.5" style="max-height: 0;" hidden>
+                                    <a href="#" data-category-id="amor-dedicar" data-category-name="Frases de amor para dedicar" class="category-link block px-3 py-1.5 text-xs text-gray-500 hover:bg-gray-50 rounded-md">Frases de amor para dedicar</a>
+                                    <a href="#" data-category-id="amor-desamor" data-category-name="Frases de desamor y superación" class="category-link block px-3 py-1.5 text-xs text-gray-500 hover:bg-gray-50 rounded-md">Frases de desamor y superación</a>
+                                    </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-toggle flex items-center justify-between w-full px-3 py-2 text-left text-xs font-medium text-gray-600 hover:bg-gray-50 rounded-md"
+                                        aria-expanded="false" aria-controls="sub-accordion-creatividad-mobile">
+                                    <span>🎨 Creatividad y Expresión</span>
+                                    <svg class="w-4 h-4 transform transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                </button>
+                                <div id="sub-accordion-creatividad-mobile" class="sub-accordion-content pl-4 mt-1 space-y-0.5" style="max-height: 0;" hidden>
+                                    <a href="#" data-category-id="creatividad-ia" data-category-name="Creador de frases (IA)" class="category-link block px-3 py-1.5 text-xs text-gray-500 hover:bg-gray-50 rounded-md cta-link-style">✨ Creador de frases (IA)</a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" data-category-id="frase-del-dia" data-category-name="Frase del Día" class="category-link block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Frase del día</a>
+                    <a href="#" data-category-id="recomendaciones" data-category-name="Recomendaciones" class="category-link block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Recomendaciones</a>
+                    <a href="#explore-all-categories-page" id="explore-all-link-mobile" class="category-link block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Explorar Todo</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-3">
+        <nav aria-label="Migas de Pan" class="text-sm text-gray-600">
+            <ol id="breadcrumb-ol" class="list-none p-0 inline-flex space-x-2">
+                <li class="flex items-center">
+                    <a href="#" id="breadcrumb-inicio" class="hover:text-indigo-600 hover:underline">Inicio</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <main class="container mx-auto px-4">
+        <section id="explore-all-categories-page" class="hidden py-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">Explorar Todas las Categorías</h1>
+            <div id="all-categories-content-list" class="space-y-6">
+                </div>
+        </section>
+
+        <div id="main-content-area">
+            <div id="category-content">
+                <section class="category-section">
+                    <h1 id="category-title" class="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">Bienvenido a LogoFrases</h1>
+                    <p id="category-welcome-message" class="text-gray-600 text-lg">Explora nuestras categorías en el menú o descubre la frase del día.</p>
+
+                    <div id="category-view-container" class="hidden">
+                        <div class="md:flex md:space-x-6">
+                            <aside id="filters-sidebar" class="md:w-1/4 mb-6 md:mb-0 p-4 bg-white rounded-lg shadow">
+                                <h2 class="text-lg font-semibold text-gray-700 mb-4 pb-2 border-b border-gray-200">Filtrar Frases</h2>
+                                
+                                <div class="mb-4">
+                                    <label for="search-phrases-input" class="block text-sm font-medium text-gray-700 mb-1">Buscar en categoría:</label>
+                                    <input type="search" id="search-phrases-input" placeholder="Escribe para filtrar..."
+                                           class="py-2 px-3 w-full text-sm border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+
+                                <div id="faceted-filters-container" class="space-y-4">
+                                    <div>
+                                        <label for="filter-author-type" class="block text-sm font-medium text-gray-700">Tipo de Autor:</label>
+                                        <select id="filter-author-type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option value="">Todos</option>
+                                            </select>
+                                    </div>
+                                    <div>
+                                        <label for="filter-occasion" class="block text-sm font-medium text-gray-700">Ocasión:</label>
+                                        <select id="filter-occasion" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option value="">Todas</option>
+                                            </select>
+                                    </div>
+                                    <div>
+                                        <label for="filter-style" class="block text-sm font-medium text-gray-700">Estilo:</label>
+                                        <select id="filter-style" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <option value="">Todos</option>
+                                            </select>
+                                    </div>
+                                    <button type="button" id="reset-filters-button" class="w-full mt-2 px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-300">
+                                        Limpiar Filtros
+                                    </button>
+                                </div>
+                                </aside>
+
+                            <div id="cards-container-dynamic" class="cards-container md:w-3/4">
+                                </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="quote-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-content-wrapper">
+            <div class="modal-actions-sidebar" id="modal-actions-sidebar-container" role="toolbar" aria-label="Acciones de la frase"></div>
+            <div id="modal-card-placeholder">
+                </div>
+            <button id="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-gray-300 py-12 mt-16 rounded-t-lg">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Navegación Rápida</h3>
+                    <ul class="space-y-2 text-sm" role="list">
+                        <li><a href="#explore-all-categories-page" id="footer-explore-all-link" class="hover:text-indigo-400 hover:underline">Explorar Todas las Frases</a></li>
+                        <li><a href="#" data-category-id="amor-dedicar" data-category-name="Frases de amor para dedicar" class="category-link hover:text-indigo-400 hover:underline">💖 Amor y Relaciones</a></li>
+                        <li><a href="#" data-category-id="motivacion-dia" data-category-name="Frases para empezar el día" class="category-link hover:text-indigo-400 hover:underline">🚀 Motivación y Éxito</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Comunidad y Creación</h3>
+                    <ul class="space-y-2 text-sm" role="list">
+                        <li><a href="#" data-category-id="creatividad-ia" data-category-name="Creador de frases (IA)" class="category-link hover:text-yellow-400 hover:underline cta-link-style">✨ Crea tu Frase (IA)</a></li>
+                        <li><a href="#enviar-frase" class="hover:text-indigo-400 hover:underline">Envía tu Frase</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Sobre Nosotros</h3>
+                    <ul class="space-y-2 text-sm" role="list">
+                        <li><a href="#acerca-de" class="hover:text-indigo-400 hover:underline">Acerca de Nosotros</a></li>
+                        <li><a href="#contacto" class="hover:text-indigo-400 hover:underline">Contacto</a></li>
+                        <li><a href="#faq" class="hover:text-indigo-400 hover:underline">Preguntas Frecuentes (FAQ)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Legal</h3>
+                    <ul class="space-y-2 text-sm" role="list">
+                        <li><a href="#politica-privacidad" class="hover:text-indigo-400 hover:underline">Política de Privacidad</a></li>
+                        <li><a href="#terminos-servicio" class="hover:text-indigo-400 hover:underline">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-gray-700 text-center text-sm">
+                <p>&copy; <span id="currentYear">2025</span> LogoFrases. Todos los derechos reservados.</p>
+                <p class="mt-2">Iconos de categorías por <a href="https://twemoji.twitter.com/" class="hover:underline" target="_blank" rel="noopener noreferrer">Twemoji</a> (CC-BY 4.0) y otros.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
